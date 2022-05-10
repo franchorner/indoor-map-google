@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { StyleSheet, View, Dimensions } from "react-native";
-import { markers, mapRetroStyle, regions } from './model/mapData';
+import React, { useState } from 'react';
+import { StyleSheet, View, Dimensions, Text } from "react-native";
+import { levelTerrain, level2, level1, mapRetroStyle } from './model/mapData';
 import MapView, { PROVIDER_GOOGLE, Marker, Polygon } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 
 const styles = StyleSheet.create({
@@ -18,6 +18,41 @@ const styles = StyleSheet.create({
 
 
 export default function App() {
+  const [currentPoints, setCurrentPoints] = useState([]);
+  const [currentColors, setCurrentColors] = useState([]);
+
+  const clickIcon = ({ coordinate }) => {
+    const { latitude, longitude } = coordinate;
+    currentPoints.map((marker, index) => {
+
+      if (latitude === marker.coordinate.latitude && longitude === marker.coordinate.longitude) {
+        setCurrentColors(marker.coordenates);
+        marker.fillColor = true;
+      }
+      else {
+        marker.fillColor = false;
+      }
+      console.log(marker.fillColor);
+    })
+  };
+
+
+  const loadMap = () => {
+    setCurrentPoints(levelTerrain);
+  }
+
+  const onChangeIndoorLevel = ({ IndoorLevel }) => {
+    const { name } = IndoorLevel;
+    if (name == "T") {
+      setCurrentPoints(levelTerrain);
+    }
+    if (name == "1") {
+      setCurrentPoints(level1);
+    }
+    if (name == "2") {
+      setCurrentPoints(level2);
+    }
+  };
   return (
     <View style={styles.container}>
       <MapView
@@ -30,33 +65,54 @@ export default function App() {
         style={styles.container}
         provider={PROVIDER_GOOGLE}
         customMapStyle={mapRetroStyle}
+        showsIndoors={true}
+        showsIndoorLevelPicker={true}
+        zoomControlEnabled={true}
         zoomEnabled={true}
+        minZoomLevel={18}
+        onIndoorLevelActivated={(event) => onChangeIndoorLevel(event.nativeEvent)}
+        onMapReady={loadMap}
       >
-        {markers.map((marker, index) => {
-          return (
-            <Marker
-              key={index}
-              coordinate={marker.coordinate}
-              image={marker.image}
-              title={marker.title}
-              description={marker.description}
-            ></Marker>
-          );
-        })}
-        {regions.map((region, index) => {
-          return (
-            <>
-              <Polygon
-                coordinates={region.coordinates}
-                strokeColor="red"
-                strokeWidth={2}
-              />
-            </>
-          );
-
+        {currentPoints.map((marker, index) => {
+          if (marker.coordenates != currentColors) {
+            return (
+              <>
+                <Marker
+                  coordinate={marker.coordinate}
+                  image={marker.image}
+                  title={marker.title}
+                  description={marker.description}
+                  onPress={(event) => clickIcon(event.nativeEvent)}
+                />
+                <Polygon
+                  coordinates={marker.coordenates}
+                  strokeColor="red"
+                  strokeWidth={2}
+                  fillColor='transparent'
+                />
+              </>
+            )
+          } else if (marker.coordenates === currentColors && marker.fillColor === true) {
+            return (
+              <>
+                <Marker
+                  coordinate={marker.coordinate}
+                  image={marker.image}
+                  title={marker.title}
+                  description={marker.description}
+                  onPress={(event) => clickIcon(event.nativeEvent)}
+                />
+                <Polygon
+                  coordinates={marker.coordenates}
+                  strokeColor="red"
+                  strokeWidth={2}
+                  fillColor={marker.color}
+                />
+              </>
+            )
+          }
         })}
       </MapView>
-    </View>
-
+    </View >
   )
 };

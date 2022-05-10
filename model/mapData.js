@@ -1,82 +1,36 @@
-const Images = [
-  { image: require("../assets/icons/farmacy.png") },
-  { image: require("../assets/icons/icecream.png") },
-  { image: require("../assets/icons/bakery.png") },
-];
+import { laboratorio, sorveteria, cafeteria, cosmeticos } from "./coordenates";
 
-export const regions = [
+export const level2 = [
   {
-    coordinates: [
-      {
-        latitude: -23.591942554885566,
-        longitude: -46.689548169243395,
-      },
-
-      {
-        latitude: -23.591988642889582,
-        longitude: -46.68939260112643,
-      },
-
-      {
-        latitude: -23.59220740706111,
-        longitude: -46.68946837352823,
-      },
-
-      {
-        latitude: -23.592161319133957,
-        longitude: -46.689625953301885,
-      },
-    ]
+    coordinate: {
+      latitude: -23.59115728893556,
+      longitude: -46.6895851521253,
+    },
+    title: "Le Pain Quotidien",
+    description: "Essa é uma cafeteria.",
+    image: require("../assets/icons/bakery.png"),
+    coordenates: cafeteria,
+    fillColor: false,
   },
   {
-    coordinates: [
-      {
-        latitude: -23.59107610098597,
-        longitude: -46.689724945355884,
-      },
-
-      {
-        latitude: -23.591147384229416,
-        longitude: -46.689749085236684,
-      },
-
-      {
-        latitude: -23.591250621961617,
-        longitude: -46.68940911524882,
-      },
-
-      {
-        latitude: -23.591183025836617,
-        longitude: -46.68938430481578,
-      },
-    ]
-  },
-  {
-    coordinates: [
-      {
-        latitude: -23.591387989998974,
-        longitude: -46.69001790393914,
-      },
-
-      {
-        latitude: -23.591399665677542,
-        longitude: -46.6899790119099,
-      },
-
-      {
-        latitude: -23.591472792272278,
-        longitude: -46.69000315179012,
-      },
-
-      {
-        latitude: -23.591460502091145,
-        longitude: -46.69004338492382,
-      },
-    ]
+    coordinate: {
+      latitude: -23.591526641816166,
+      longitude: -46.69007793566434,
+    },
+    title: "Loja de Cosméticos",
+    description: "Essa é uma loja de Cosméticos",
+    image: require("../assets/icons/make-up.png"),
+    coordenates: cosmeticos,
+    fillColor: false,
   },
 ];
 
-export const markers = [
+export const level1 = [
+
+];
+
+
+export const levelTerrain = [
   {
     coordinate: {
       latitude: -23.592063634644905,
@@ -84,7 +38,10 @@ export const markers = [
     },
     title: "Zambon Laboratórios Farmacêuticos",
     description: "Esse é o laboratório Zambom.",
-    image: Images[0].image,
+    image: require("../assets/icons/farmacy.png"),
+    coordenates: laboratorio,
+    fillColor: false,
+    color: "#668bcc",
   },
   {
     coordinate: {
@@ -94,16 +51,9 @@ export const markers = [
     },
     title: "Bacio di Latte | JK Iguatemi",
     description: "Essa é uma sorveteria.",
-    image: Images[1].image
-  },
-  {
-    coordinate: {
-      latitude: -23.59115728893556,
-      longitude: -46.6895851521253,
-    },
-    title: "Le Pain Quotidien",
-    description: "Essa é uma cafeteria.",
-    image: Images[2].image
+    image: require("../assets/icons/icecream.png"),
+    coordenates: sorveteria,
+    fillColor: false,
   },
 ];
 export const mapRetroStyle = [
