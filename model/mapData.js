@@ -1,4 +1,4 @@
-import { laboratorio, sorveteria, cafeteria, cosmeticos } from "./coordenates";
+import { laboratorio, sorveteria, cafeteria, cosmeticos, arezzoShoeStore, lojaDeRoupasDiesel } from "./coordenates";
 
 export const level2 = [
   {
@@ -26,7 +26,26 @@ export const level2 = [
 ];
 
 export const level1 = [
-
+  {
+    coordinate: {
+      latitude: -23.591530295042926,
+      longitude: -46.68954104024841
+    },
+    title: "Arezzo Shoe Store",
+    description: "Essa é uma loja de sapatos",
+    coordenates: arezzoShoeStore,
+    fillColor: false,
+  },
+  {
+     coordinate: {
+       latitude: -23.591345327774434,
+       longitude: -46.68977573353078
+     },
+     title: "Diesel",
+     description: "Essa é uma loja de roupas masculina",
+     coordenates: lojaDeRoupasDiesel,
+     fillColor: false,
+  }
 ];
 
 

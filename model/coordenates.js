@@ -117,3 +117,57 @@ export const shoeStore2 = [
     longitude: -46.6897066848439
   }
 ];
+
+export const arezzoShoeStore = [ //1o andar
+  {
+    latitude: -23.59148482138687,
+    longitude: -46.68958194393433
+  },
+
+  {
+    latitude: -23.591514932323044,
+    longitude: -46.6894793494434
+  },
+
+  {
+    latitude: -23.591587444345077,
+    longitude: -46.68950415987585
+  },
+
+  {
+    latitude: -23.59154934481307,
+    longitude: -46.68963022369476
+  },
+
+  {
+    latitude: -23.591513088796543,
+    longitude: -46.68961748320244
+  },
+
+  {
+    latitude: -23.591519233884792,
+    longitude: -46.689594684426666
+  },
+];
+
+export const lojaDeRoupasDiesel = [ //1o andar
+  {
+    latitude: -23.591299239544448,
+    longitude: -46.68982200163453
+  },
+
+  {
+    latitude: -23.591328736013512,
+    longitude: -46.689723430456965
+  },
+
+  {
+    latitude: -23.591398790100953,
+    longitude: -46.689748240889415
+  },
+
+  {
+    latitude: -23.591370522666665,
+    longitude: -46.68984614151475
+  },
+] 
